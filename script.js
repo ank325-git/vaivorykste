@@ -16,7 +16,6 @@ const translations = {
     navDates: "Laisvos datos",
     navReserve: "Rezervuoti",
     heroRating: "★ 9.5 Booking.com",
-    
     heroTitle: "Vaivorykštės Poolside Apartment",
     heroText: "Jaukūs apartamentai poilsiui Palangoje prie jūros su terasa, šildomu baseinu ir ramia aplinka.",
     heroPrimary: "Rezervuoti dabar",
