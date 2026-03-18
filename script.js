@@ -1,7 +1,6 @@
 const galleryImages = [
   "assets/photo-1.jpg","assets/photo-2.jpg","assets/photo-3.jpg","assets/photo-4.jpg",
-  "assets/photo-5.jpg","assets/photo-6.jpg","assets/photo-7.jpg","assets/photo-8.jpg",
-  "assets/photo-9.jpg","assets/photo-11.svg","assets/photo-12.svg"
+  "assets/photo-5.jpg","assets/photo-6.jpg","assets/photo-7.jpg","assets/photo-8.jpg"
 ];
 
 const translations = {
@@ -17,9 +16,9 @@ const translations = {
     navDates: "Laisvos datos",
     navReserve: "Rezervuoti",
     heroRating: "★ 9.5 Booking.com",
-    heroEyebrow: "Palanga • Kunigiškės • Vaivorykštės g.",
+    
     heroTitle: "Vaivorykštės Poolside Apartment",
-    heroText: "Jaukūs apartamentai poilsiui prie jūros su terasa, šildomu baseinu ir ramia aplinka.",
+    heroText: "Jaukūs apartamentai poilsiui Palangoje prie jūros su terasa, šildomu baseinu ir ramia aplinka.",
     heroPrimary: "Rezervuoti dabar",
     heroSecondary: "Peržiūrėti nuotraukas",
     featuresTitle: "Patogumai",
@@ -47,7 +46,7 @@ const translations = {
     price2Label: "Vasara",
     price2Text: "Dauguma vasaros datų su gera kaina tiesioginei rezervacijai.",
     price3Label: "Šventės",
-    price3Text: "Gruodis–vasaris, šventiniai savaitgaliai ir jaukūs poilsio pabėgimai ne sezono metu.",
+    price3Text: "Šventiniai savaitgaliai ir jaukūs poilsio pabėgimai ne sezono metu.",
     pricingNote: "Dėl tikslios kainos ir laisvų datų parašykite tiesiogiai – dažnai galima pasiūlyti geresnę kainą nei per platformas.",
     calendarTitle: "Užimtumo kalendorius",
     calendarIntro: "",
@@ -107,7 +106,7 @@ const translations = {
     price2Label: "Summer",
     price2Text: "Most summer dates with strong direct-booking value.",
     price3Label: "Holiday season",
-    price3Text: "December–February, festive weekends, and cozy escapes outside the summer peak.",
+    price3Text: "Festive weekends, and cozy escapes outside the summer peak.",
     pricingNote: "For the exact rate and available dates, send a direct message — you can often offer a better price than on major platforms.",
     calendarTitle: "Availability calendar",
     calendarIntro: "",
