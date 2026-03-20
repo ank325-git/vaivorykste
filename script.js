@@ -134,6 +134,9 @@ const galleryButtons = document.querySelectorAll('.gallery-item[data-index]');
 const openGalleryBtn = document.getElementById("openGalleryBtn");
 const langButtons = document.querySelectorAll('.lang-btn');
 const heroImage = document.getElementById('heroImage');
+const availabilityCalendar = document.getElementById('availabilityCalendar');
+const calendarBaseUrl = 'https://calendar.google.com/calendar/embed';
+const calendarId = 't43jlbtvbnh9uv7vd040lpdldcge1m72@import.calendar.google.com';
 let currentIndex = 0;
 
 function updateSeasonalPricing(){
@@ -195,6 +198,20 @@ function setLanguage(lang){
   if(nextBtn) nextBtn.setAttribute('aria-label', t.nextLabel);
   if(lightboxImage) lightboxImage.alt = t.lightboxAlt;
   if(heroImage) heroImage.alt = t.heroAlt;
+  if(availabilityCalendar){
+    const params = new URLSearchParams({
+      src: calendarId,
+      ctz: 'Europe/Vilnius',
+      hl: lang === 'lt' ? 'lt' : 'en',
+      mode: 'MONTH',
+      showTitle: '0',
+      showPrint: '0',
+      showTabs: '0',
+      showCalendars: '0'
+    });
+    availabilityCalendar.src = `${calendarBaseUrl}?${params.toString()}`;
+    availabilityCalendar.title = t.calendarTitle;
+  }
   langButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
   localStorage.setItem('siteLanguage', lang);
 }
