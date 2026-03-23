@@ -1,6 +1,9 @@
 const galleryImages = [
   "assets/photo-1.jpg","assets/photo-2.jpg","assets/photo-3.jpg","assets/photo-4.jpg",
-  "assets/photo-5.jpg","assets/photo-6.jpg","assets/photo-7.jpg","assets/photo-8.jpg"
+  "assets/photo-5.jpg","assets/photo-6.jpg","assets/photo-7.jpg","assets/photo-8.jpg",
+  "assets/photo-9.jpg","assets/photo-10.jpg","assets/photo-11.jpg","assets/photo-12.jpg",
+  "assets/photo-13.jpg","assets/photo-14.jpg","assets/photo-15.jpg","assets/photo-16.jpg",
+  "assets/photo-17.jpg"
 ];
 
 const translations = {
@@ -130,6 +133,8 @@ const lightboxImage = document.getElementById("lightboxImage");
 const closeBtn = document.getElementById("lightboxClose");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
+const lightboxThumbs = document.getElementById("lightboxThumbs");
+const lightboxStatus = document.getElementById("lightboxStatus");
 const galleryButtons = document.querySelectorAll('.gallery-item[data-index]');
 const openGalleryBtn = document.getElementById("openGalleryBtn");
 const langButtons = document.querySelectorAll('.lang-btn');
@@ -160,9 +165,54 @@ function updateSeasonalPricing(){
   if(cards[featuredIndex]) cards[featuredIndex].classList.add("featured");
 }
 
+function centerActiveThumb(activeThumb){
+  if(!lightboxThumbs || !activeThumb) return;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const targetLeft = activeThumb.offsetLeft - ((lightboxThumbs.clientWidth - activeThumb.clientWidth) / 2);
+  const maxScrollLeft = Math.max(0, lightboxThumbs.scrollWidth - lightboxThumbs.clientWidth);
+  lightboxThumbs.scrollTo({
+    left: Math.max(0, Math.min(targetLeft, maxScrollLeft)),
+    behavior: prefersReducedMotion ? 'auto' : 'smooth'
+  });
+}
+
+function updateLightboxView(){
+  if(!lightboxImage) return;
+  lightboxImage.src = galleryImages[currentIndex];
+  if(lightboxStatus) lightboxStatus.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
+  if(lightboxThumbs){
+    const thumbs = lightboxThumbs.querySelectorAll('.lightbox-thumb');
+    let activeThumb = null;
+    thumbs.forEach((thumb, index) => {
+      const isActive = index === currentIndex;
+      thumb.classList.toggle('active', isActive);
+      thumb.setAttribute('aria-current', isActive ? 'true' : 'false');
+      if(isActive) activeThumb = thumb;
+    });
+    centerActiveThumb(activeThumb);
+  }
+}
+
+function buildLightboxThumbs(){
+  if(!lightboxThumbs || lightboxThumbs.childElementCount) return;
+  galleryImages.forEach((src, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'lightbox-thumb';
+    button.setAttribute('aria-label', `Photo ${index + 1} of ${galleryImages.length}`);
+    button.innerHTML = `<img src="${src}" alt="">`;
+    button.addEventListener('click', () => {
+      currentIndex = index;
+      updateLightboxView();
+    });
+    lightboxThumbs.appendChild(button);
+  });
+}
+
 function openLightbox(index){
   currentIndex = index;
-  lightboxImage.src = galleryImages[currentIndex];
+  buildLightboxThumbs();
+  updateLightboxView();
   lightbox.classList.add("open");
   lightbox.setAttribute("aria-hidden","false");
   document.body.style.overflow = "hidden";
@@ -174,11 +224,11 @@ function closeLightbox(){
 }
 function showNext(){
   currentIndex = (currentIndex + 1) % galleryImages.length;
-  lightboxImage.src = galleryImages[currentIndex];
+  updateLightboxView();
 }
 function showPrev(){
   currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-  lightboxImage.src = galleryImages[currentIndex];
+  updateLightboxView();
 }
 
 function setupLightboxTouch(){
@@ -266,6 +316,14 @@ document.addEventListener("keydown", e => {
   if(e.key === "ArrowLeft") showPrev();
 });
 
+function getAnchorScrollTarget(target){
+  if(!target) return null;
+  if(target.matches('#galerija, #kainos, #kalendorius, #lokacija, #rezervacija, #patogumai')){
+    return target.querySelector('.section-head, .container > h2, .container > h1') || target.querySelector('.container') || target;
+  }
+  return target;
+}
+
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
     const href = link.getAttribute('href');
@@ -273,9 +331,13 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     if(target){
       e.preventDefault();
       const header = document.querySelector('.topbar');
-      const headerOffset = header ? header.offsetHeight + 12 : 88;
-      const y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+      const headerOffset = header ? header.offsetHeight + 8 : 84;
+      const scrollTarget = getAnchorScrollTarget(target);
+      const y = scrollTarget.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      if(history.replaceState){
+        history.replaceState(null, '', href);
+      }
     }
   });
 });

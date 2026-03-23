@@ -159,9 +159,15 @@
 
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <button class="lightbox-close" id="lightboxClose" aria-label="Uždaryti">×</button>
-    <button class="lightbox-nav prev" id="prevBtn" aria-label="Ankstesnė">‹</button>
-    <img id="lightboxImage" src="" alt="Galerijos nuotrauka">
-    <button class="lightbox-nav next" id="nextBtn" aria-label="Kita">›</button>
+    <button class="lightbox-nav prev" id="prevBtn" aria-label="Ankstesnė">←</button>
+    <div class="lightbox-stage">
+      <div class="lightbox-status" id="lightboxStatus" aria-live="polite">1 / 17</div>
+      <div class="lightbox-media">
+        <img id="lightboxImage" src="" alt="Galerijos nuotrauka">
+      </div>
+      <div class="lightbox-thumbs" id="lightboxThumbs" aria-label="Galerijos nuotraukų juosta"></div>
+    </div>
+    <button class="lightbox-nav next" id="nextBtn" aria-label="Kita">→</button>
   </div>
 
   <div class="sticky-mobile">
