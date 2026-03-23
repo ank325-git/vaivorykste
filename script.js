@@ -49,9 +49,6 @@ const translations = {
     pricingNote: "Dėl tikslios kainos ir laisvų datų parašykite tiesiogiai – dažnai galima pasiūlyti geresnę kainą nei per platformas.",
     calendarTitle: "Užimtumo kalendorius",
     calendarIntro: "",
-    calendarMobileTitle: "Peržiūrėti kalendorių",
-    calendarMobileText: "Telefone Google kalendoriaus įterpinys kartais neatsidaro dėl naršyklės ar slapukų ribojimų. Atidaryk kalendorių pilname lange.",
-    calendarOpenBtn: "Atidaryti kalendorių",
     locationTitle: "Lokacija",
     locationText: "<span class=\"location-name\">Vaivorykštės Poolside Apartment</span> įsikūrę ramesnėje Palangos dalyje – Kunigiškėse, patogioje vietoje poilsiui prie jūros, šalia dviračių takų ir lengvai pasiekiamo paplūdimio.<span class=\"location-address\">Adresas: Vaivorykštės gatvė 7c-1, Palanga</span>",
     bookingTitle: "Rezervacija tiesiogiai",
@@ -112,9 +109,6 @@ const translations = {
     pricingNote: "For the exact rate and available dates, send a direct message — you can often offer a better price than on major platforms.",
     calendarTitle: "Availability calendar",
     calendarIntro: "",
-    calendarMobileTitle: "Open the calendar",
-    calendarMobileText: "On some phones the embedded Google Calendar may not load because of browser or cookie restrictions. Open it in a full page instead.",
-    calendarOpenBtn: "Open calendar",
     locationTitle: "Location",
     locationText: "<span class=\"location-name\">Vaivorykštės Poolside Apartment</span> is set in the quieter part of Palanga – Kunigiškės, a convenient spot for a relaxed seaside stay close to cycling paths and the beach.<span class=\"location-address\">Address: Vaivorykštės gatvė 7c-1, Palanga</span>",
     bookingTitle: "Direct booking",
@@ -141,15 +135,11 @@ const openGalleryBtn = document.getElementById("openGalleryBtn");
 const langButtons = document.querySelectorAll('.lang-btn');
 const heroImage = document.getElementById('heroImage');
 const availabilityCalendar = document.getElementById('availabilityCalendar');
-const calendarWrap = document.getElementById('calendarWrap');
-const calendarMobileFallback = document.getElementById('calendarMobileFallback');
-const calendarOpenBtn = document.getElementById('calendarOpenBtn');
 const calendarBaseUrl = 'https://calendar.google.com/calendar/embed';
 const calendarId = 't43jlbtvbnh9uv7vd040lpdldcge1m72@import.calendar.google.com';
 let currentIndex = 0;
 let touchStartX = 0;
 let touchStartY = 0;
-const swipeThreshold = 40;
 
 function updateSeasonalPricing(){
   const cards = [
@@ -191,47 +181,37 @@ function showPrev(){
   lightboxImage.src = galleryImages[currentIndex];
 }
 
-function handleLightboxTouchStart(event){
-  const touch = event.touches && event.touches[0];
-  if(!touch) return;
-  touchStartX = touch.clientX;
-  touchStartY = touch.clientY;
+function setupLightboxTouch(){
+  if(!lightbox) return;
+
+  lightbox.addEventListener("touchstart", e => {
+    if(!lightbox.classList.contains("open") || !e.touches.length) return;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  lightbox.addEventListener("touchend", e => {
+    if(!lightbox.classList.contains("open") || !e.changedTouches.length) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if(Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2){
+      if(dx < 0){
+        showNext();
+      } else {
+        showPrev();
+      }
+    }
+  }, { passive: true });
 }
 
-function handleLightboxTouchEnd(event){
-  const touch = event.changedTouches && event.changedTouches[0];
-  if(!touch) return;
-
-  const deltaX = touch.clientX - touchStartX;
-  const deltaY = touch.clientY - touchStartY;
-
-  if(Math.abs(deltaX) < swipeThreshold || Math.abs(deltaX) < Math.abs(deltaY)) return;
-
-  if(deltaX < 0){
-    showNext();
-  } else {
-    showPrev();
+function updateStickyMobileOffset(){
+  const vv = window.visualViewport;
+  if(!vv){
+    document.documentElement.style.setProperty('--vv-bottom-offset', '0px');
+    return;
   }
-}
-
-
-function updateCalendarAccess(lang){
-  const isMobile = window.matchMedia('(max-width: 760px)').matches;
-  const openUrl = `https://calendar.google.com/calendar/u/0/r/month?cid=${encodeURIComponent(calendarId)}&ctz=Europe%2FVilnius&hl=${lang === 'lt' ? 'lt' : 'en'}`;
-
-  if(calendarOpenBtn){
-    calendarOpenBtn.href = openUrl;
-  }
-
-  if(!calendarWrap || !calendarMobileFallback) return;
-
-  if(isMobile){
-    calendarWrap.classList.add('mobile-fallback');
-    calendarMobileFallback.hidden = false;
-  } else {
-    calendarWrap.classList.remove('mobile-fallback');
-    calendarMobileFallback.hidden = true;
-  }
+  const bottomOffset = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+  document.documentElement.style.setProperty('--vv-bottom-offset', `${Math.round(bottomOffset)}px`);
 }
 
 function setLanguage(lang){
@@ -267,7 +247,6 @@ function setLanguage(lang){
     availabilityCalendar.src = `${calendarBaseUrl}?${params.toString()}`;
     availabilityCalendar.title = t.calendarTitle;
   }
-  updateCalendarAccess(lang);
   langButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
   localStorage.setItem('siteLanguage', lang);
 }
@@ -277,11 +256,7 @@ if (openGalleryBtn) openGalleryBtn.addEventListener("click", () => openLightbox(
 if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
 if (nextBtn) nextBtn.addEventListener("click", showNext);
 if (prevBtn) prevBtn.addEventListener("click", showPrev);
-if (lightbox) {
-  lightbox.addEventListener("click", e => { if(e.target === lightbox) closeLightbox(); });
-  lightbox.addEventListener('touchstart', handleLightboxTouchStart, { passive: true });
-  lightbox.addEventListener('touchend', handleLightboxTouchEnd, { passive: true });
-}
+if (lightbox) lightbox.addEventListener("click", e => { if(e.target === lightbox) closeLightbox(); });
 langButtons.forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
 
 document.addEventListener("keydown", e => {
@@ -305,8 +280,14 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
+setupLightboxTouch();
+updateStickyMobileOffset();
+if(window.visualViewport){
+  window.visualViewport.addEventListener('resize', updateStickyMobileOffset);
+  window.visualViewport.addEventListener('scroll', updateStickyMobileOffset);
+}
+window.addEventListener('resize', updateStickyMobileOffset);
+window.addEventListener('orientationchange', updateStickyMobileOffset);
+
 updateSeasonalPricing();
 setLanguage(localStorage.getItem('siteLanguage') || 'lt');
-window.addEventListener('resize', () => {
-  updateCalendarAccess(localStorage.getItem('siteLanguage') || 'lt');
-});
