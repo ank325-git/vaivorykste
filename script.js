@@ -138,6 +138,9 @@ const availabilityCalendar = document.getElementById('availabilityCalendar');
 const calendarBaseUrl = 'https://calendar.google.com/calendar/embed';
 const calendarId = 't43jlbtvbnh9uv7vd040lpdldcge1m72@import.calendar.google.com';
 let currentIndex = 0;
+let touchStartX = 0;
+let touchStartY = 0;
+const swipeThreshold = 40;
 
 function updateSeasonalPricing(){
   const cards = [
@@ -177,6 +180,29 @@ function showNext(){
 function showPrev(){
   currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
   lightboxImage.src = galleryImages[currentIndex];
+}
+
+function handleLightboxTouchStart(event){
+  const touch = event.touches && event.touches[0];
+  if(!touch) return;
+  touchStartX = touch.clientX;
+  touchStartY = touch.clientY;
+}
+
+function handleLightboxTouchEnd(event){
+  const touch = event.changedTouches && event.changedTouches[0];
+  if(!touch) return;
+
+  const deltaX = touch.clientX - touchStartX;
+  const deltaY = touch.clientY - touchStartY;
+
+  if(Math.abs(deltaX) < swipeThreshold || Math.abs(deltaX) < Math.abs(deltaY)) return;
+
+  if(deltaX < 0){
+    showNext();
+  } else {
+    showPrev();
+  }
 }
 
 function setLanguage(lang){
@@ -221,7 +247,11 @@ if (openGalleryBtn) openGalleryBtn.addEventListener("click", () => openLightbox(
 if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
 if (nextBtn) nextBtn.addEventListener("click", showNext);
 if (prevBtn) prevBtn.addEventListener("click", showPrev);
-if (lightbox) lightbox.addEventListener("click", e => { if(e.target === lightbox) closeLightbox(); });
+if (lightbox) {
+  lightbox.addEventListener("click", e => { if(e.target === lightbox) closeLightbox(); });
+  lightbox.addEventListener('touchstart', handleLightboxTouchStart, { passive: true });
+  lightbox.addEventListener('touchend', handleLightboxTouchEnd, { passive: true });
+}
 langButtons.forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
 
 document.addEventListener("keydown", e => {
