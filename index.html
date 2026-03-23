@@ -119,8 +119,15 @@
           <div><h2 data-i18n="calendarTitle">Užimtumo kalendorius</h2></div>
           
         </div>
-        <div class="calendar-wrap">
+        <div class="calendar-wrap" id="calendarWrap">
           <iframe id="availabilityCalendar" title="Availability calendar" src="https://calendar.google.com/calendar/embed?src=t43jlbtvbnh9uv7vd040lpdldcge1m72%40import.calendar.google.com&ctz=Europe%2FVilnius&hl=lt" loading="lazy"></iframe>
+          <div class="calendar-mobile-fallback" id="calendarMobileFallback" hidden>
+            <div class="calendar-mobile-card">
+              <h3 data-i18n="calendarMobileTitle">Peržiūrėti kalendorių</h3>
+              <p data-i18n="calendarMobileText">Telefone Google kalendoriaus įterpinys kartais neatsidaro dėl naršyklės ar slapukų ribojimų. Atidaryk kalendorių pilname lange.</p>
+              <a class="btn btn-primary" id="calendarOpenBtn" href="https://calendar.google.com/calendar/u/0/embed?src=t43jlbtvbnh9uv7vd040lpdldcge1m72%40import.calendar.google.com&ctz=Europe%2FVilnius&hl=lt" target="_blank" rel="noopener" data-i18n="calendarOpenBtn">Atidaryti kalendorių</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

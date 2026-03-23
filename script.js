@@ -49,6 +49,9 @@ const translations = {
     pricingNote: "Dėl tikslios kainos ir laisvų datų parašykite tiesiogiai – dažnai galima pasiūlyti geresnę kainą nei per platformas.",
     calendarTitle: "Užimtumo kalendorius",
     calendarIntro: "",
+    calendarMobileTitle: "Peržiūrėti kalendorių",
+    calendarMobileText: "Telefone Google kalendoriaus įterpinys kartais neatsidaro dėl naršyklės ar slapukų ribojimų. Atidaryk kalendorių pilname lange.",
+    calendarOpenBtn: "Atidaryti kalendorių",
     locationTitle: "Lokacija",
     locationText: "<span class=\"location-name\">Vaivorykštės Poolside Apartment</span> įsikūrę ramesnėje Palangos dalyje – Kunigiškėse, patogioje vietoje poilsiui prie jūros, šalia dviračių takų ir lengvai pasiekiamo paplūdimio.<span class=\"location-address\">Adresas: Vaivorykštės gatvė 7c-1, Palanga</span>",
     bookingTitle: "Rezervacija tiesiogiai",
@@ -109,6 +112,9 @@ const translations = {
     pricingNote: "For the exact rate and available dates, send a direct message — you can often offer a better price than on major platforms.",
     calendarTitle: "Availability calendar",
     calendarIntro: "",
+    calendarMobileTitle: "Open the calendar",
+    calendarMobileText: "On some phones the embedded Google Calendar may not load because of browser or cookie restrictions. Open it in a full page instead.",
+    calendarOpenBtn: "Open calendar",
     locationTitle: "Location",
     locationText: "<span class=\"location-name\">Vaivorykštės Poolside Apartment</span> is set in the quieter part of Palanga – Kunigiškės, a convenient spot for a relaxed seaside stay close to cycling paths and the beach.<span class=\"location-address\">Address: Vaivorykštės gatvė 7c-1, Palanga</span>",
     bookingTitle: "Direct booking",
@@ -135,6 +141,9 @@ const openGalleryBtn = document.getElementById("openGalleryBtn");
 const langButtons = document.querySelectorAll('.lang-btn');
 const heroImage = document.getElementById('heroImage');
 const availabilityCalendar = document.getElementById('availabilityCalendar');
+const calendarWrap = document.getElementById('calendarWrap');
+const calendarMobileFallback = document.getElementById('calendarMobileFallback');
+const calendarOpenBtn = document.getElementById('calendarOpenBtn');
 const calendarBaseUrl = 'https://calendar.google.com/calendar/embed';
 const calendarId = 't43jlbtvbnh9uv7vd040lpdldcge1m72@import.calendar.google.com';
 let currentIndex = 0;
@@ -205,6 +214,26 @@ function handleLightboxTouchEnd(event){
   }
 }
 
+
+function updateCalendarAccess(lang){
+  const isMobile = window.matchMedia('(max-width: 760px)').matches;
+  const openUrl = `https://calendar.google.com/calendar/u/0/r/month?cid=${encodeURIComponent(calendarId)}&ctz=Europe%2FVilnius&hl=${lang === 'lt' ? 'lt' : 'en'}`;
+
+  if(calendarOpenBtn){
+    calendarOpenBtn.href = openUrl;
+  }
+
+  if(!calendarWrap || !calendarMobileFallback) return;
+
+  if(isMobile){
+    calendarWrap.classList.add('mobile-fallback');
+    calendarMobileFallback.hidden = false;
+  } else {
+    calendarWrap.classList.remove('mobile-fallback');
+    calendarMobileFallback.hidden = true;
+  }
+}
+
 function setLanguage(lang){
   const t = translations[lang] || translations.lt;
   document.documentElement.lang = lang;
@@ -238,6 +267,7 @@ function setLanguage(lang){
     availabilityCalendar.src = `${calendarBaseUrl}?${params.toString()}`;
     availabilityCalendar.title = t.calendarTitle;
   }
+  updateCalendarAccess(lang);
   langButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
   localStorage.setItem('siteLanguage', lang);
 }
@@ -277,3 +307,6 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
 updateSeasonalPricing();
 setLanguage(localStorage.getItem('siteLanguage') || 'lt');
+window.addEventListener('resize', () => {
+  updateCalendarAccess(localStorage.getItem('siteLanguage') || 'lt');
+});
