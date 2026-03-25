@@ -6,127 +6,7 @@ const galleryImages = [
   "assets/photo-17.jpg"
 ];
 
-const translations = {
-  lt: {
-    pageTitle: "Vaivorykštės Poolside Apartment | Kunigiškės, Palanga",
-    metaDescription: "Vaivorykštės Poolside Apartment – apartamentai Kunigiškėse su šildomu baseinu, terasa, privačiu parkingu ir patogiu poilsiu iki 4 svečių.",
-    navFeatures: "Patogumai",
-    navGallery: "Galerija",
-    navPricing: "Kainos",
-    navCalendar: "Kalendorius",
-    navLocation: "Lokacija",
-    navBooking: "Rezervacija",
-    navDates: "Laisvos datos",
-    navReserve: "Rezervuoti",
-    heroRating: "★ 9.5 Booking.com",
-    heroTitle: "Vaivorykštės Poolside Apartment",
-    heroText: "Jaukūs apartamentai poilsiui Palangoje prie jūros su terasa, šildomu baseinu ir ramia aplinka.",
-    heroPrimary: "Rezervuoti dabar",
-    heroSecondary: "Peržiūrėti nuotraukas",
-    featuresTitle: "Patogumai",
-    featuresIntro: "",
-    feature1Title: "Šildomas baseinas",
-    feature1Text: "Maudynės komfortiškai bet kokiu oru ir dar malonesnis poilsis viso sezono metu.",
-    feature2Title: "Terasa",
-    feature2Text: "Patogi vieta rytinei kavai, poilsiui lauke ir vakarui po maudynių.",
-    feature3Title: "Iki 4 svečių",
-    feature3Text: "Dvigulė lova miegamajame ir išskleidžiama sofa-lova svetainėje.",
-    feature4Title: "Privati parkavimo vieta",
-    feature4Text: "Patogus įvažiavimas per šlagbaumą ir atskira vieta automobiliui.",
-    feature5Title: "Jauki aplinka",
-    feature5Text: "Daugiau privatumo ir malonesnė poilsio atmosfera aplink apartamentus.",
-    feature6Title: "Netoli jūros",
-    feature6Text: "Patogus atstumas pėsčiomis iki pajūrio ramiam poilsiui Kunigiškėse.",
-    galleryTitle: "Nuotraukų galerija",
-    galleryIntro: "",
-    galleryMore: "Visos nuotraukos",
-    pricingTitle: "Kainos",
-    pricingIntro: "",
-    price1Label: "Pavasaris / Ruduo",
-    price1Text: "Kovas–gegužė ir rugsėjis–lapkritis – subalansuotas metas ramiam poilsiui prie jūros.",
-    priceBadge: "",
-    price2Label: "Vasara",
-    price2Text: "Dauguma vasaros datų su gera kaina tiesioginei rezervacijai.",
-    price3Label: "Šventės",
-    price3Text: "Šventiniai savaitgaliai ir jaukūs poilsio pabėgimai ne sezono metu.",
-    pricingNote: "Dėl tikslios kainos ir laisvų datų parašykite tiesiogiai – dažnai galima pasiūlyti geresnę kainą nei per platformas.",
-    calendarTitle: "Užimtumo kalendorius",
-    calendarIntro: "",
-    locationTitle: "Lokacija",
-    locationText: "<span class=\"location-name\">Vaivorykštės Poolside Apartment</span> įsikūrę ramesnėje Palangos dalyje – Kunigiškėse, patogioje vietoje poilsiui prie jūros, šalia dviračių takų ir lengvai pasiekiamo paplūdimio.<span class=\"location-address\">Adresas: Vaivorykštės gatvė 7c-1, Palanga</span>",
-    bookingTitle: "Rezervacija tiesiogiai",
-    bookingText: "Susisiek dėl laisvų datų, kainos ir rezervacijos.",
-    bookingPhone: "+370 677 55519",
-    bookingEmail: "El. paštas",
-    footerText: "© Vaivorykštės Poolside Apartment",
-    stickyReserve: "Rezervuoti apartamentus",
-    closeLabel: "Uždaryti",
-    prevLabel: "Ankstesnė",
-    nextLabel: "Kita",
-    lightboxAlt: "Galerijos nuotrauka",
-    heroAlt: "Vaivorykštės Poolside Apartment baseinas"
-  },
-  en: {
-    pageTitle: "Vaivorykštės Poolside Apartment | Kunigiskes, Palanga",
-    metaDescription: "Vaivorykštės Poolside Apartment – a cozy stay in Kunigiskes with a heated pool, terrace, private parking, and comfortable accommodation for up to 4 guests.",
-    navFeatures: "Amenities",
-    navGallery: "Gallery",
-    navPricing: "Rates",
-    navCalendar: "Calendar",
-    navLocation: "Location",
-    navBooking: "Booking",
-    navDates: "Availability",
-    navReserve: "Book now",
-    heroRating: "★ 9.5 Booking.com",
-    heroEyebrow: "Palanga • Kunigiskes • Vaivorykštės St.",
-    heroTitle: "Vaivorykštės Poolside Apartment",
-    heroText: "A bright poolside stay near the sea with a private terrace, heated outdoor pool, and a calm setting.",
-    heroPrimary: "Book now",
-    heroSecondary: "View photos",
-    featuresTitle: "Amenities",
-    featuresIntro: "",
-    feature1Title: "Heated pool",
-    feature1Text: "Comfortable swimming in any weather and a more enjoyable stay throughout the season.",
-    feature2Title: "Terrace",
-    feature2Text: "An inviting outdoor space for slow mornings, evening drinks, and relaxing after the beach or pool.",
-    feature3Title: "Up to 4 guests",
-    feature3Text: "Ideal for couples, small families, or up to four guests with a double bed and sofa bed setup.",
-    feature4Title: "Private parking",
-    feature4Text: "Easy gated access and a dedicated parking spot make arrival simple and stress-free.",
-    feature5Title: "Cozy surroundings",
-    feature5Text: "A calmer setting with a more private feel than a typical busy central stay.",
-    feature6Title: "Close to the sea",
-    feature6Text: "Close enough for easy beach days while still enjoying a quieter part of Palanga.",
-    galleryTitle: "Photo gallery",
-    galleryIntro: "",
-    galleryMore: "All photos",
-    pricingTitle: "Suggested rates",
-    pricingIntro: "",
-    price1Label: "Spring / Autumn",
-    price1Text: "March–May and September–November – a balanced season for a relaxed seaside stay.",
-    priceBadge: "",
-    price2Label: "Summer",
-    price2Text: "Most summer dates with strong direct-booking value.",
-    price3Label: "Holiday season",
-    price3Text: "Festive weekends, and cozy escapes outside the summer peak.",
-    pricingNote: "For the exact rate and available dates, send a direct message — you can often offer a better price than on major platforms.",
-    calendarTitle: "Availability calendar",
-    calendarIntro: "",
-    locationTitle: "Location",
-    locationText: "<span class=\"location-name\">Vaivorykštės Poolside Apartment</span> is set in the quieter part of Palanga – Kunigiškės, a convenient spot for a relaxed seaside stay close to cycling paths and the beach.<span class=\"location-address\">Address: Vaivorykštės gatvė 7c-1, Palanga</span>",
-    bookingTitle: "Direct booking",
-    bookingText: "Message directly for exact availability, final rates, and the best booking option for your dates.",
-    bookingPhone: "+370 677 55519",
-    bookingEmail: "Email",
-    footerText: "© Vaivorykštės Poolside Apartment",
-    stickyReserve: "Book this apartment",
-    closeLabel: "Close",
-    prevLabel: "Previous",
-    nextLabel: "Next",
-    lightboxAlt: "Gallery image",
-    heroAlt: "Vaivorykštės Poolside Apartment pool"
-  }
-};
+const translations = window.translations || {};
 
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
@@ -137,6 +17,7 @@ const lightboxThumbs = document.getElementById("lightboxThumbs");
 const lightboxStatus = document.getElementById("lightboxStatus");
 const galleryButtons = document.querySelectorAll('.gallery-item[data-index]');
 const openGalleryBtn = document.getElementById("openGalleryBtn");
+const galleryItemImages = document.querySelectorAll('.gallery-item img');
 const langButtons = document.querySelectorAll('.lang-btn');
 const heroImage = document.getElementById('heroImage');
 const availabilityCalendar = document.getElementById('availabilityCalendar');
@@ -193,13 +74,20 @@ function updateLightboxView(){
   }
 }
 
+function getThumbAriaLabel(index){
+  const lang = document.documentElement.lang === 'en' ? 'en' : 'lt';
+  const dict = translations[lang] || translations.lt || {};
+  const template = dict.galleryThumbLabel || 'Photo {current} of {total}';
+  return template.replace('{current}', index + 1).replace('{total}', galleryImages.length);
+}
+
 function buildLightboxThumbs(){
   if(!lightboxThumbs || lightboxThumbs.childElementCount) return;
   galleryImages.forEach((src, index) => {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'lightbox-thumb';
-    button.setAttribute('aria-label', `Photo ${index + 1} of ${galleryImages.length}`);
+    button.setAttribute('aria-label', getThumbAriaLabel(index));
     button.innerHTML = `<img src="${src}" alt="">`;
     button.addEventListener('click', () => {
       currentIndex = index;
@@ -283,6 +171,11 @@ function setLanguage(lang){
   if(nextBtn) nextBtn.setAttribute('aria-label', t.nextLabel);
   if(lightboxImage) lightboxImage.alt = t.lightboxAlt;
   if(heroImage) heroImage.alt = t.heroAlt;
+  if(galleryItemImages.length && Array.isArray(t.galleryAlts)) {
+    galleryItemImages.forEach((img, index) => {
+      if(t.galleryAlts[index]) img.alt = t.galleryAlts[index];
+    });
+  }
   if(availabilityCalendar){
     const params = new URLSearchParams({
       src: calendarId,
@@ -296,6 +189,11 @@ function setLanguage(lang){
     });
     availabilityCalendar.src = `${calendarBaseUrl}?${params.toString()}`;
     availabilityCalendar.title = t.calendarTitle;
+  }
+  if(lightboxThumbs){
+    lightboxThumbs.querySelectorAll('.lightbox-thumb').forEach((thumb, index) => {
+      thumb.setAttribute('aria-label', getThumbAriaLabel(index));
+    });
   }
   langButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
   localStorage.setItem('siteLanguage', lang);

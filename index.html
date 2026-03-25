@@ -50,7 +50,7 @@
     <div class="container nav">
       <a href="#virsus" class="brand brand-logo-only" aria-label="Pradžia"><img src="assets/header-logo-clean.png" alt="Vaivorykštės Poolside Apartment logo" class="header-logo"></a>
       <nav class="nav-links">
-        <a href="#patogumai" data-i18n="navFeatures">Patogumai</a><a href="#galerija" data-i18n="navGallery">Galerija</a><a href="#kainos" data-i18n="navPricing">Kainos</a><a href="#kalendorius" data-i18n="navCalendar">Kalendorius</a><a href="#lokacija" data-i18n="navLocation">Lokacija</a><a href="#rezervacija" data-i18n="navBooking">Rezervacija</a>
+        <a href="#patogumai" data-i18n="navFeatures">Patogumai</a><a href="#galerija" data-i18n="navGallery">Galerija</a><a href="#kainos" data-i18n="navPricing">Kainos</a><a href="#informacija" data-i18n="navInfo">Informacija</a><a href="#kalendorius" data-i18n="navCalendar">Kalendorius</a><a href="#lokacija" data-i18n="navLocation">Lokacija</a>
       </nav>
       <div class="nav-actions">
         <div class="lang-switch" aria-label="Language switcher">
@@ -130,17 +130,17 @@
         <div class="pricing-grid">
           <article class="price-card featured" id="priceCard1">
             <div class="price-label" data-i18n="price1Label">Pavasaris / Ruduo</div>
-            <div class="price-value">€69–109</div>
+            <div class="price-value">Nuo €69</div>
             <p data-i18n="price1Text">Kovas–gegužė ir rugsėjis–lapkritis – subalansuotas metas ramiam poilsiui prie jūros.</p>
           </article>
           <article class="price-card" id="priceCard2">
             <div class="price-label" data-i18n="price2Label">Vasara</div>
-            <div class="price-value">€109–129</div>
+            <div class="price-value">Nuo €109</div>
             <p data-i18n="price2Text">Dauguma vasaros datų su gera kaina tiesioginei rezervacijai.</p>
           </article>
           <article class="price-card" id="priceCard3">
             <div class="price-label" data-i18n="price3Label">Šventės</div>
-            <div class="price-value">€129–149</div>
+            <div class="price-value">Nuo €129</div>
             <p data-i18n="price3Text">Šventiniai savaitgaliai ir jaukūs poilsio pabėgimai ne sezono metu.</p>
           </article>
         </div>
@@ -148,7 +148,33 @@
       </div>
     </section>
     
-    <section id="kalendorius" class="section section-plain">
+    <section id="informacija" class="section section-plain">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 data-i18n="infoTitle">Svarbi informacija</h2>
+            <p data-i18n="infoIntro">Viskas, ko reikia patogiam poilsiui prie jūros:</p>
+          </div>
+        </div>
+        <div class="info-panel">
+          <ul class="info-list" aria-label="Svarbi informacija">
+            <li><span class="info-bullet">👥</span><span data-i18n="infoItem1">Iki 4 svečių</span></li>
+            <li><span class="info-bullet">🛏️</span><span data-i18n="infoItem2">1 miegamasis: dvigulė lova + sofa-lova</span></li>
+            <li><span class="info-bullet">🍳</span><span data-i18n="infoItem3">Pilnai įrengta virtuvė (indai, kavos aparatas)</span></li>
+            <li><span class="info-bullet">🚿</span><span data-i18n="infoItem4">Dušas, rankšluosčiai</span></li>
+            <li><span class="info-bullet">🌿</span><span data-i18n="infoItem5">Privati terasa su tiesioginiu išėjimu į šildomą baseiną</span></li>
+            <li><span class="info-bullet">🔥</span><span data-i18n="infoItem6">Galimybė naudotis griliumi</span></li>
+            <li><span class="info-bullet">📍</span><span data-i18n="infoItem7">Kunigiškės, ~10 min. iki jūros</span></li>
+            <li><span class="info-bullet">🚗</span><span data-i18n="infoItem8">Nemokamas parkingas</span></li>
+            <li><span class="info-bullet">📶</span><span data-i18n="infoItem9">Nemokamas Wi‑Fi</span></li>
+            <li><span class="info-bullet">🕒</span><span data-i18n="infoItem10">Atvykimas nuo 15:00, išvykimas iki 11:00</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="kalendorius" class="section section-tint">
       <div class="container">
         <div class="section-head">
           <div><h2 data-i18n="calendarTitle">Užimtumo kalendorius</h2></div>
@@ -160,7 +186,7 @@
       </div>
     </section>
 
-    <section id="lokacija" class="section section-tint">
+    <section id="lokacija" class="section section-plain">
       <div class="container location-grid">
         <div class="location-copy">
           <h2 class="section-title" data-i18n="locationTitle">Lokacija</h2>
@@ -172,7 +198,7 @@
       </div>
     </section>
 
-    <section id="rezervacija" class="section section-plain">
+    <section id="rezervacija" class="section section-tint">
       <div class="container">
         <div class="cta-box">
           <div>
@@ -209,6 +235,7 @@
     <a class="btn btn-primary" href="#rezervacija" data-i18n="stickyReserve">Rezervuoti apartamentus</a>
   </div>
 
+  <script src="translations.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
