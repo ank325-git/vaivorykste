@@ -1,10 +1,11 @@
+const assetBase = (document.documentElement.dataset.assetBase || "assets/").replace(/\/?$/, "/");
 const galleryImages = [
-  "assets/photo-1.jpg","assets/photo-2.jpg","assets/photo-3.jpg","assets/photo-4.jpg",
-  "assets/photo-5.jpg","assets/photo-6.jpg","assets/photo-7.jpg","assets/photo-8.jpg",
-  "assets/photo-9.jpg","assets/photo-10.jpg","assets/photo-11.jpg","assets/photo-12.jpg",
-  "assets/photo-13.jpg","assets/photo-14.jpg","assets/photo-15.jpg","assets/photo-16.jpg",
-  "assets/photo-17.jpg"
-];
+  "photo-1.jpg","photo-2.jpg","photo-3.jpg","photo-4.jpg",
+  "photo-5.jpg","photo-6.jpg","photo-7.jpg","photo-8.jpg",
+  "photo-9.jpg","photo-10.jpg","photo-11.jpg","photo-12.jpg",
+  "photo-13.jpg","photo-14.jpg","photo-15.jpg","photo-16.jpg",
+  "photo-17.jpg"
+].map(filename => `${assetBase}${filename}`);
 
 const translations = window.translations || {};
 
@@ -60,6 +61,10 @@ function centerActiveThumb(activeThumb){
 function updateLightboxView(){
   if(!lightboxImage) return;
   lightboxImage.src = galleryImages[currentIndex];
+  const lang = document.documentElement.lang === 'en' ? 'en' : 'lt';
+  const dict = translations[lang] || translations.lt || {};
+  const imageAlts = Array.isArray(dict.galleryAlts) ? dict.galleryAlts : [];
+  lightboxImage.alt = imageAlts[currentIndex] || dict.lightboxAlt || 'Gallery photo';
   if(lightboxStatus) lightboxStatus.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
   if(lightboxThumbs){
     const thumbs = lightboxThumbs.querySelectorAll('.lightbox-thumb');
@@ -152,12 +157,56 @@ function updateStickyMobileOffset(){
   document.documentElement.style.setProperty('--vv-bottom-offset', `${Math.round(bottomOffset)}px`);
 }
 
+function getPageDefaultLanguage(){
+  const configuredLang = document.documentElement.dataset.pageLang;
+  if(configuredLang === 'en' || configuredLang === 'lt') return configuredLang;
+  return document.documentElement.lang === 'en' ? 'en' : 'lt';
+}
+
+function getPathLanguage(){
+  const firstPathPart = window.location.pathname.split('/').filter(Boolean)[0];
+  return firstPathPart === 'en' ? 'en' : null;
+}
+
+function isEnglishPage(){
+  return getPathLanguage() === 'en' || document.documentElement.dataset.pageLang === 'en';
+}
+
+function syncMetaForLanguage(t){
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if(metaDesc) metaDesc.setAttribute('content', t.metaDescription);
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if(ogTitle) ogTitle.setAttribute('content', t.pageTitle);
+  const ogDescription = document.querySelector('meta[property="og:description"]');
+  if(ogDescription) ogDescription.setAttribute('content', t.metaDescription);
+  const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+  if(twitterTitle) twitterTitle.setAttribute('content', t.pageTitle);
+  const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+  if(twitterDescription) twitterDescription.setAttribute('content', t.metaDescription);
+}
+
+function changeLanguage(lang){
+  const runningOnWeb = window.location.protocol === 'http:' || window.location.protocol === 'https:';
+  if(runningOnWeb){
+    if(lang === 'en' && !isEnglishPage()){
+      localStorage.setItem('siteLanguage', 'en');
+      window.location.href = 'en/';
+      return;
+    }
+    if(lang === 'lt' && isEnglishPage()){
+      localStorage.setItem('siteLanguage', 'lt');
+      window.location.href = '../';
+      return;
+    }
+  }
+  setLanguage(lang);
+}
+
 function setLanguage(lang){
   const t = translations[lang] || translations.lt;
   document.documentElement.lang = lang;
   document.title = t.pageTitle;
-  const metaDesc = document.querySelector('meta[name="description"]');
-  if(metaDesc) metaDesc.setAttribute('content', t.metaDescription);
+  syncMetaForLanguage(t);
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
     if (key in t) el.textContent = t[key];
@@ -205,7 +254,7 @@ if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
 if (nextBtn) nextBtn.addEventListener("click", showNext);
 if (prevBtn) prevBtn.addEventListener("click", showPrev);
 if (lightbox) lightbox.addEventListener("click", e => { if(e.target === lightbox) closeLightbox(); });
-langButtons.forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
+langButtons.forEach(btn => btn.addEventListener('click', () => changeLanguage(btn.dataset.lang)));
 
 document.addEventListener("keydown", e => {
   if(!lightbox || !lightbox.classList.contains("open")) return;
@@ -250,4 +299,4 @@ window.addEventListener('resize', updateStickyMobileOffset);
 window.addEventListener('orientationchange', updateStickyMobileOffset);
 
 updateSeasonalPricing();
-setLanguage(localStorage.getItem('siteLanguage') || 'lt');
+setLanguage(getPathLanguage() || localStorage.getItem('siteLanguage') || getPageDefaultLanguage());

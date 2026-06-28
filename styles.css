@@ -910,3 +910,86 @@ a{text-decoration:none;color:inherit}
     border-radius:16px;
   }
 }
+
+
+/* === SEO content and hero title tuning === */
+.seo-intro-section{
+  padding-top:56px;
+}
+.seo-intro-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:34px 36px;
+  box-shadow:var(--shadow);
+  max-width:980px;
+  margin:0 auto;
+}
+.seo-intro-card h2{
+  margin:0 0 18px;
+  font-size:clamp(28px,3vw,42px);
+  line-height:1.12;
+  letter-spacing:-.6px;
+}
+.seo-intro-card p{
+  margin:0;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.75;
+  text-wrap:pretty;
+}
+.seo-intro-card p + p{
+  margin-top:14px;
+}
+.hero-overlay-content h1{
+  max-width:13.5ch !important;
+  font-size:clamp(48px,4.8vw,74px) !important;
+  line-height:1.02 !important;
+}
+.hero-overlay-content p{
+  max-width:42ch !important;
+}
+#apie{
+  scroll-margin-top:76px;
+}
+@media (max-width:1100px){
+  .hero-overlay-content h1{
+    font-size:clamp(40px,6vw,62px) !important;
+    max-width:14ch !important;
+  }
+}
+@media (max-width:760px){
+  .seo-intro-section{
+    padding-top:36px;
+  }
+  .seo-intro-card{
+    padding:24px 20px;
+    border-radius:24px;
+  }
+  .seo-intro-card p{
+    font-size:15px;
+    line-height:1.68;
+  }
+  .hero-overlay-content h1{
+    max-width:none !important;
+    font-size:clamp(27px,7.6vw,36px) !important;
+    line-height:1.08 !important;
+    letter-spacing:-.7px !important;
+  }
+  .hero-overlay-content p{
+    max-width:none !important;
+    font-size:15.5px !important;
+  }
+}
+
+/* === SEO v2 fixes after visual QA === */
+.seo-intro-card{
+  max-width:none !important;
+  width:100% !important;
+  margin:0 !important;
+}
+@media (max-width:760px){
+  .seo-intro-card{
+    width:100% !important;
+  }
+}
