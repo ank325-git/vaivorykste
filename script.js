@@ -1,11 +1,12 @@
 const assetBase = (document.documentElement.dataset.assetBase || "assets/").replace(/\/?$/, "/");
 const galleryImages = [
-  "photo-1.jpg","photo-2.jpg","photo-3.jpg","photo-4.jpg",
-  "photo-5.jpg","photo-6.jpg","photo-7.jpg","photo-8.jpg",
-  "photo-9.jpg","photo-10.jpg","photo-11.jpg","photo-12.jpg",
-  "photo-13.jpg","photo-14.jpg","photo-15.jpg","photo-16.jpg",
-  "photo-17.jpg"
+  "photo-1-1600.jpg","photo-2-1600.jpg","photo-3-1600.jpg","photo-4-1600.jpg",
+  "photo-5-1600.jpg","photo-6-1600.jpg","photo-7-1600.jpg","photo-8-1600.jpg",
+  "photo-9-1600.jpg","photo-10-1600.jpg","photo-11-1600.jpg","photo-12-1600.jpg",
+  "photo-13-1600.jpg","photo-14-1600.jpg","photo-15-1600.jpg","photo-16-1600.jpg",
+  "photo-17-1600.jpg"
 ].map(filename => `${assetBase}${filename}`);
+const galleryThumbImages = galleryImages.map(src => src.replace("-1600.jpg", "-800.jpg"));
 
 const translations = window.translations || {};
 
@@ -93,7 +94,7 @@ function buildLightboxThumbs(){
     button.type = 'button';
     button.className = 'lightbox-thumb';
     button.setAttribute('aria-label', getThumbAriaLabel(index));
-    button.innerHTML = `<img src="${src}" alt="">`;
+    button.innerHTML = `<img src="${galleryThumbImages[index]}" alt="" loading="lazy">`;
     button.addEventListener('click', () => {
       currentIndex = index;
       updateLightboxView();
@@ -236,7 +237,8 @@ function setLanguage(lang){
       showTabs: '0',
       showCalendars: '0'
     });
-    availabilityCalendar.src = `${calendarBaseUrl}?${params.toString()}`;
+    const nextSrc = `${calendarBaseUrl}?${params.toString()}`;
+    if(availabilityCalendar.src !== nextSrc) availabilityCalendar.src = nextSrc;
     availabilityCalendar.title = t.calendarTitle;
   }
   if(lightboxThumbs){
@@ -298,5 +300,39 @@ if(window.visualViewport){
 window.addEventListener('resize', updateStickyMobileOffset);
 window.addEventListener('orientationchange', updateStickyMobileOffset);
 
+// Atidarius svetainę tiesiai iš disko (file://), nuorodos į katalogus
+// neatidaro juose esančio index.html – papildome jas rankiniu būdu.
+if(window.location.protocol === 'file:'){
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    const match = href && !/^(https?:)?\/\//.test(href) && !href.startsWith('#')
+      ? href.match(/^(.*\/)(#.*)?$/)
+      : null;
+    if(match) link.setAttribute('href', `${match[1]}index.html${match[2] || ''}`);
+  });
+}
+
+const navBurger = document.getElementById('navBurger');
+const navLinks = document.getElementById('navLinks');
+if(navBurger && navLinks){
+  navBurger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navBurger.classList.toggle('open', isOpen);
+    navBurger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navBurger.classList.remove('open');
+      navBurger.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
 updateSeasonalPricing();
-setLanguage(getPathLanguage() || localStorage.getItem('siteLanguage') || getPageDefaultLanguage());
+const runningOnWeb = window.location.protocol === 'http:' || window.location.protocol === 'https:';
+// On the web each language lives at its own URL, so the URL decides the language
+// (stored preference must not rewrite the LT page into English in place).
+setLanguage(runningOnWeb
+  ? (getPathLanguage() || getPageDefaultLanguage())
+  : (localStorage.getItem('siteLanguage') || getPageDefaultLanguage()));

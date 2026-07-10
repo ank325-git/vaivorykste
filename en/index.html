@@ -18,15 +18,18 @@
 <meta content="Apartment in Palanga with heated pool | Kunigiškės" property="og:title"/>
 <meta content="A cosy apartment in Kunigiškės, Palanga for up to 4 guests: private terrace, heated pool, parking, Wi‑Fi and an easy walk to the sea. Book direct." property="og:description"/>
 <meta content="https://apartamentaipalanga.lt/en/" property="og:url"/>
-<meta content="https://apartamentaipalanga.lt/assets/hero_2560.png" property="og:image"/>
+<meta content="https://apartamentaipalanga.lt/assets/og-image.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Heated outdoor pool at Vaivorykštės Poolside Apartment in Kunigiškės" property="og:image:alt"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Apartment in Palanga with heated pool | Kunigiškės" name="twitter:title"/>
 <meta content="A cosy apartment in Kunigiškės, Palanga for up to 4 guests: private terrace, heated pool, parking, Wi‑Fi and an easy walk to the sea. Book direct." name="twitter:description"/>
-<meta content="https://apartamentaipalanga.lt/assets/hero_2560.png" name="twitter:image"/>
+<meta content="https://apartamentaipalanga.lt/assets/og-image.jpg" name="twitter:image"/>
 <link href="../assets/favicon-v2-32.png" rel="icon" type="image/png"/>
 <link href="../favicon.ico" rel="shortcut icon"/>
 <link href="../assets/favicon-v2-180.png" rel="apple-touch-icon"/>
-<link as="image" href="../assets/hero_2560.png" rel="preload" type="image/png"/>
+<link as="image" href="../assets/hero-1536.jpg" imagesrcset="../assets/hero-1024.jpg 1024w, ../assets/hero-1536.jpg 1536w" imagesizes="100vw" rel="preload"/>
 <link href="../styles.css" rel="stylesheet"/>
 <script type="application/ld+json">
 {
@@ -36,10 +39,13 @@
   "name": "Vaivorykštės Poolside Apartment",
   "alternateName": "Apartment in Palanga with heated pool in Kunigiškės",
   "url": "https://apartamentaipalanga.lt/en/",
+  "sameAs": [
+    "https://www.booking.com/hotel/lt/vaivorykstes-poolside-apartment.html"
+  ],
   "image": [
-    "https://apartamentaipalanga.lt/assets/hero_2560.png",
-    "https://apartamentaipalanga.lt/assets/photo-6.jpg",
-    "https://apartamentaipalanga.lt/assets/photo-1.jpg"
+    "https://apartamentaipalanga.lt/assets/hero-1536.jpg",
+    "https://apartamentaipalanga.lt/assets/photo-6-1600.jpg",
+    "https://apartamentaipalanga.lt/assets/photo-1-1600.jpg"
   ],
   "description": "A cosy apartment in Kunigiškės, Palanga for up to 4 guests: private terrace, heated pool, parking, Wi‑Fi and an easy walk to the sea. Book direct.",
   "telephone": "+37067755519",
@@ -49,28 +55,35 @@
     "@type": "PostalAddress",
     "streetAddress": "Vaivorykštės gatvė 7c-1",
     "addressLocality": "Palanga",
+    "postalCode": "00221",
     "addressCountry": "LT"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 55.95565,
+    "longitude": 21.07993
   },
   "areaServed": {
     "@type": "City",
     "name": "Palanga"
   },
+  "numberOfRooms": 1,
   "checkinTime": "15:00",
   "checkoutTime": "11:00",
   "amenityFeature": [
     {
       "@type": "LocationFeatureSpecification",
-      "name": "Šildomas lauko baseinas",
+      "name": "Heated outdoor pool",
       "value": true
     },
     {
       "@type": "LocationFeatureSpecification",
-      "name": "Privati terasa",
+      "name": "Private terrace",
       "value": true
     },
     {
       "@type": "LocationFeatureSpecification",
-      "name": "Privati parkavimo vieta",
+      "name": "Private parking",
       "value": true
     },
     {
@@ -80,13 +93,77 @@
     },
     {
       "@type": "LocationFeatureSpecification",
-      "name": "Pilnai įrengta virtuvė",
+      "name": "Fully equipped kitchen",
       "value": true
     },
     {
       "@type": "LocationFeatureSpecification",
-      "name": "Galimybė naudotis griliumi",
+      "name": "Barbecue facilities",
       "value": true
+    }
+  ]
+}
+  </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many guests can stay in the apartment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The apartment comfortably sleeps up to 4 guests: a double bed in the bedroom and a fold-out sofa bed in the living room."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the pool heated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, the outdoor pool is heated, so swimming is comfortable throughout the warm season. The private terrace has direct access to the pool."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How far is the sea?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Kunigiškės beach is about a 10-minute walk away along a quiet path through the pine forest."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is parking available?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, guests have a free private parking space with gated access."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the check-in and check-out times?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Check-in from 15:00, check-out until 11:00. Different times can be arranged individually."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are pets allowed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unfortunately, pets are not allowed – we want to keep the apartment comfortable for all guests, including those with allergies."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I book the apartment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Book directly by phone +370 677 55519, via WhatsApp or by email. Booking direct often gets you a better price than booking platforms."
+      }
     }
   ]
 }
@@ -95,9 +172,9 @@
 <body>
 <header class="topbar">
 <div class="container nav">
-<a aria-label="Home" class="brand brand-logo-only" href="#virsus"><img alt="Vaivorykštės Poolside Apartment logo" class="header-logo" src="../assets/header-logo-clean.png"/></a>
-<nav class="nav-links">
-<a data-i18n="navFeatures" href="#patogumai">Amenities</a><a data-i18n="navGallery" href="#galerija">Gallery</a><a data-i18n="navPricing" href="#kainos">Prices</a><a data-i18n="navInfo" href="#informacija">Information</a><a data-i18n="navCalendar" href="#kalendorius">Calendar</a><a data-i18n="navLocation" href="#lokacija">Location</a>
+<a aria-label="Home" class="brand brand-logo-only" href="#virsus"><img alt="Vaivorykštės Poolside Apartment logo" class="header-logo" src="../assets/header-logo-small.png" width="240" height="215"/></a>
+<nav class="nav-links" id="navLinks">
+<a data-i18n="navFeatures" href="#patogumai">Amenities</a><a data-i18n="navGallery" href="#galerija">Gallery</a><a data-i18n="navPricing" href="#kainos">Prices</a><a data-i18n="navInfo" href="#informacija">Information</a><a data-i18n="navCalendar" href="#kalendorius">Calendar</a><a data-i18n="navLocation" href="#lokacija">Location</a><a data-i18n="navFaq" href="#duk">FAQ</a>
 </nav>
 <div class="nav-actions">
 <div aria-label="Language switcher" class="lang-switch">
@@ -106,6 +183,7 @@
 </div>
 <a class="btn btn-secondary" data-i18n="navDates" href="#kalendorius">Available dates</a>
 <a class="btn btn-primary" data-i18n="navReserve" href="#rezervacija">Book now</a>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Menu" class="nav-burger" id="navBurger" type="button"><span></span><span></span><span></span></button>
 </div>
 </div>
 </header>
@@ -113,12 +191,13 @@
 <section class="hero-overlay section-plain">
 <div class="container">
 <div class="hero-overlay-box">
-<img alt="Apartment in Palanga with a heated pool in Kunigiškės – Vaivorykštės Poolside Apartment" class="hero-bg" id="heroImage" src="../assets/hero_2560.png"/>
+<img alt="Apartment in Palanga with a heated pool in Kunigiškės – Vaivorykštės Poolside Apartment" class="hero-bg" id="heroImage" src="../assets/hero-1536.jpg" srcset="../assets/hero-1024.jpg 1024w, ../assets/hero-1536.jpg 1536w" sizes="100vw" width="1536" height="1024" fetchpriority="high"/>
 <div class="hero-shade"></div>
 <div class="hero-overlay-content">
-<div class="hero-rating" data-i18n="heroRating">★ 9.5 on Booking.com</div>
+<a class="hero-rating" data-i18n="heroRating" href="https://www.booking.com/hotel/lt/vaivorykstes-poolside-apartment.html" rel="noopener" target="_blank">★ 9.5 on Booking.com</a>
+<div class="hero-brand">Vaivorykštės Poolside Apartment</div>
 <h1 data-i18n="heroTitle">Palanga apartment with heated pool</h1>
-<p data-i18n="heroText">Vaivorykštės Poolside Apartment in Kunigiškės is a cosy stay for up to 4 guests with a terrace, private parking and an easy walk to the sea.</p>
+<p data-i18n-html="heroText"><strong>Vaivorykštės Poolside Apartment</strong> in Kunigiškės is a cosy stay for up to 4 guests with a terrace, private parking and an easy walk to the sea.</p>
 <div class="hero-actions">
 <a class="btn btn-primary" data-i18n="heroPrimary" href="#rezervacija">Book now</a>
 <a class="btn btn-secondary light" data-i18n="heroSecondary" href="#galerija">View photos</a>
@@ -131,7 +210,7 @@
 <div class="container">
 <div class="seo-intro-card">
 <h2 data-i18n="seoIntroTitle">Apartment in Palanga with a pool, terrace and a quiet Kunigiškės setting</h2>
-<p data-i18n="seoIntroText1">Vaivorykštės Poolside Apartment is a cosy apartment in Kunigiškės, Palanga, designed for a quiet seaside stay. It sleeps up to 4 guests and includes a separate bedroom, a living area with a sofa bed, a fully equipped kitchen, shower, towels, Wi‑Fi and private parking.</p>
+<p data-i18n-html="seoIntroText1"><strong>Vaivorykštės Poolside Apartment</strong> is a cosy apartment in Kunigiškės, Palanga, designed for a quiet seaside stay. It sleeps up to 4 guests and includes a separate bedroom, a living area with a sofa bed, a fully equipped kitchen, shower, towels, Wi‑Fi and private parking.</p>
 <p data-i18n="seoIntroText2">The key advantage is the private terrace with direct access to a heated outdoor pool. It is a practical option for guests looking for an apartment in Palanga with a pool: calmer than the central resort area, but still close to the beach, cycling paths and Kunigiškės leisure areas.</p>
 <p data-i18n="seoIntroText3">The apartment is well suited for couples, families with children or a small group of guests looking for short-term accommodation in Palanga. For available dates, pricing and reservation details, contact us by phone, WhatsApp or email — direct booking can often provide a better price than booking platforms.</p>
 </div>
@@ -143,12 +222,12 @@
 <div><h2 data-i18n="featuresTitle">Amenities</h2></div>
 </div>
 <div class="features">
-<article class="feature"><div class="icon">🏊</div><div><h3 data-i18n="feature1Title">Heated pool</h3><p data-i18n="feature1Text">Enjoy comfortable swimming throughout the season, even on cooler days.</p></div></article>
-<article class="feature"><div class="icon">☀️</div><div><h3 data-i18n="feature2Title">Private terrace</h3><p data-i18n="feature2Text">A lovely spot for morning coffee, outdoor relaxation, or a quiet evening after a swim.</p></div></article>
-<article class="feature"><div class="icon">🛏️</div><div><h3 data-i18n="feature3Title">Sleeps up to 4</h3><p data-i18n="feature3Text">A double bed in the bedroom and a sofa bed in the living area.</p></div></article>
-<article class="feature"><div class="icon">🚗</div><div><h3 data-i18n="feature4Title">Private parking</h3><p data-i18n="feature4Text">Easy gated access and a dedicated parking space for your stay.</p></div></article>
-<article class="feature"><div class="icon">🌿</div><div><h3 data-i18n="feature5Title">Peaceful surroundings</h3><p data-i18n="feature5Text">A more private and relaxing atmosphere around the apartment.</p></div></article>
-<article class="feature"><div class="icon">🌊</div><div><h3 data-i18n="feature6Title">Close to the sea</h3><p data-i18n="feature6Text">An easy walk to the beach for a relaxed stay in Kunigiškės.</p></div></article>
+<article class="feature"><div aria-hidden="true" class="icon">🏊</div><div><h3 data-i18n="feature1Title">Heated pool</h3><p data-i18n="feature1Text">Enjoy comfortable swimming throughout the season, even on cooler days.</p></div></article>
+<article class="feature"><div aria-hidden="true" class="icon">☀️</div><div><h3 data-i18n="feature2Title">Private terrace</h3><p data-i18n="feature2Text">A lovely spot for morning coffee, outdoor relaxation, or a quiet evening after a swim.</p></div></article>
+<article class="feature"><div aria-hidden="true" class="icon">🛏️</div><div><h3 data-i18n="feature3Title">Sleeps up to 4</h3><p data-i18n="feature3Text">A double bed in the bedroom and a sofa bed in the living area.</p></div></article>
+<article class="feature"><div aria-hidden="true" class="icon">🚗</div><div><h3 data-i18n="feature4Title">Private parking</h3><p data-i18n="feature4Text">Easy gated access and a dedicated parking space for your stay.</p></div></article>
+<article class="feature"><div aria-hidden="true" class="icon">🌿</div><div><h3 data-i18n="feature5Title">Peaceful surroundings</h3><p data-i18n="feature5Text">A more private and relaxing atmosphere around the apartment.</p></div></article>
+<article class="feature"><div aria-hidden="true" class="icon">🌊</div><div><h3 data-i18n="feature6Title">Close to the sea</h3><p data-i18n="feature6Text">An easy walk to the beach for a relaxed stay in Kunigiškės.</p></div></article>
 </div>
 </div>
 </section>
@@ -158,13 +237,13 @@
 <div><h2 data-i18n="galleryTitle">Photo gallery</h2></div>
 </div>
 <div class="gallery-grid">
-<button class="gallery-item large" data-index="0"><img alt="Kitchen and living area in the Palanga apartment in Kunigiškės" src="../assets/photo-1.jpg"/></button>
-<button class="gallery-item" data-index="1"><img alt="Living room with sofa bed and terrace view in the Palanga apartment" src="../assets/photo-2.jpg"/></button>
-<button class="gallery-item" data-index="2"><img alt="Bedroom at Vaivorykštės Poolside Apartment in Kunigiškės" src="../assets/photo-3.jpg"/></button>
-<button class="gallery-item" data-index="3"><img alt="Bathroom with shower in the Palanga apartment" src="../assets/photo-4.jpg"/></button>
-<button class="gallery-item" data-index="4"><img alt="Private terrace in the evening at Vaivorykštės Poolside Apartment" src="../assets/photo-5.jpg"/></button>
-<button class="gallery-item" data-index="5"><img alt="Heated outdoor pool next to the apartment in Kunigiškės" src="../assets/photo-6.jpg"/></button>
-<button class="gallery-item" data-index="6"><img alt="Path to the beach in Kunigiškės near the apartment" src="../assets/photo-7.jpg"/></button>
+<button class="gallery-item large" data-index="0"><img alt="Kitchen and living area in the Palanga apartment in Kunigiškės" src="../assets/photo-1-800.jpg" srcset="../assets/photo-1-800.jpg 800w, ../assets/photo-1-1600.jpg 1600w" sizes="(max-width: 760px) 100vw, 50vw" width="800" height="600" loading="lazy"/></button>
+<button class="gallery-item" data-index="1"><img alt="Living room with sofa bed and terrace view in the Palanga apartment" src="../assets/photo-2-800.jpg" width="800" height="600" loading="lazy"/></button>
+<button class="gallery-item" data-index="2"><img alt="Bedroom at Vaivorykštės Poolside Apartment in Kunigiškės" src="../assets/photo-3-800.jpg" width="600" height="800" loading="lazy"/></button>
+<button class="gallery-item" data-index="3"><img alt="Bathroom with shower in the Palanga apartment" src="../assets/photo-4-800.jpg" width="600" height="800" loading="lazy"/></button>
+<button class="gallery-item" data-index="4"><img alt="Private terrace in the evening at Vaivorykštės Poolside Apartment" src="../assets/photo-5-800.jpg" width="800" height="611" loading="lazy"/></button>
+<button class="gallery-item" data-index="5"><img alt="Heated outdoor pool next to the apartment in Kunigiškės" src="../assets/photo-6-800.jpg" width="800" height="600" loading="lazy"/></button>
+<button class="gallery-item" data-index="6"><img alt="Path to the beach in Kunigiškės near the apartment" src="../assets/photo-7-800.jpg" width="800" height="531" loading="lazy"/></button>
 <button class="gallery-item more-tile" data-i18n="galleryMore" id="openGalleryBtn">View all photos</button>
 </div>
 </div>
@@ -178,16 +257,19 @@
 <article class="price-card featured" id="priceCard1">
 <div class="price-label" data-i18n="price1Label">Spring / Autumn</div>
 <div class="price-value" data-i18n="price1Value">From €69</div>
+<div class="price-unit" data-i18n="priceUnit">price per night</div>
 <p data-i18n="price1Text">March to May and September to November — a great time for a peaceful seaside getaway.</p>
 </article>
 <article class="price-card" id="priceCard2">
 <div class="price-label" data-i18n="price2Label">Summer</div>
 <div class="price-value" data-i18n="price2Value">From €109</div>
+<div class="price-unit" data-i18n="priceUnit">price per night</div>
 <p data-i18n="price2Text">June–August – the peak season by the sea.</p>
 </article>
 <article class="price-card" id="priceCard3">
 <div class="price-label" data-i18n="price3Label">Peak season</div>
 <div class="price-value" data-i18n="price3Value">From €129</div>
+<div class="price-unit" data-i18n="priceUnit">price per night</div>
 <p data-i18n="price3Text">Public holidays and long weekends – the busiest period.</p>
 </article>
 </div>
@@ -204,16 +286,16 @@
 </div>
 <div class="info-panel">
 <ul aria-label="Svarbi informacija" class="info-list">
-<li><span class="info-bullet">👥</span><span data-i18n="infoItem1">Up to 4 guests</span></li>
-<li><span class="info-bullet">🛏️</span><span data-i18n="infoItem2">1 double bed + 1 sofa bed</span></li>
-<li><span class="info-bullet">🍳</span><span data-i18n="infoItem3">Fully equipped kitchen (cookware, coffee machine)</span></li>
-<li><span class="info-bullet">🚿</span><span data-i18n="infoItem4">Shower, towels included</span></li>
-<li><span class="info-bullet">🌿</span><span data-i18n="infoItem5">Private terrace with direct access to a heated pool</span></li>
-<li><span class="info-bullet">🔥</span><span data-i18n="infoItem6">Barbecue facilities available</span></li>
-<li><span class="info-bullet">📍</span><span data-i18n="infoItem7">Kunigiškės, ~10 min walk to the sea</span></li>
-<li><span class="info-bullet">🚗</span><span data-i18n="infoItem8">Free parking</span></li>
-<li><span class="info-bullet">📶</span><span data-i18n="infoItem9">Free Wi‑Fi</span></li>
-<li><span class="info-bullet">🕒</span><span data-i18n="infoItem10">Check-in from 15:00, check-out until 11:00</span></li>
+<li><span aria-hidden="true" class="info-bullet">👥</span><span data-i18n="infoItem1">Up to 4 guests</span></li>
+<li><span aria-hidden="true" class="info-bullet">🛏️</span><span data-i18n="infoItem2">1 double bed + 1 sofa bed</span></li>
+<li><span aria-hidden="true" class="info-bullet">🍳</span><span data-i18n="infoItem3">Fully equipped kitchen (cookware, coffee machine)</span></li>
+<li><span aria-hidden="true" class="info-bullet">🚿</span><span data-i18n="infoItem4">Shower, towels included</span></li>
+<li><span aria-hidden="true" class="info-bullet">🌿</span><span data-i18n="infoItem5">Private terrace with direct access to a heated pool</span></li>
+<li><span aria-hidden="true" class="info-bullet">🔥</span><span data-i18n="infoItem6">Barbecue facilities available</span></li>
+<li><span aria-hidden="true" class="info-bullet">📍</span><span data-i18n="infoItem7">Kunigiškės, ~10 min walk to the sea</span></li>
+<li><span aria-hidden="true" class="info-bullet">🚗</span><span data-i18n="infoItem8">Free parking</span></li>
+<li><span aria-hidden="true" class="info-bullet">📶</span><span data-i18n="infoItem9">Free Wi‑Fi</span></li>
+<li><span aria-hidden="true" class="info-bullet">🕒</span><span data-i18n="infoItem10">Check-in from 15:00, check-out until 11:00</span></li>
 </ul>
 </div>
 </div>
@@ -233,9 +315,72 @@
 <div class="location-copy">
 <h2 class="section-title" data-i18n="locationTitle">Location</h2>
 <p data-i18n-html="locationText"><span class="location-name">Vaivorykštės Poolside Apartment</span> is located in a quieter part of Palanga, in Kunigiškės — a convenient spot for a relaxing seaside stay, close to cycling paths and the beach.<span class="location-address">Address: Vaivorykštės gatvė 7c-1, Palanga</span></p>
+<a class="article-link" data-i18n="locationArticleLink" href="kunigiskes/">Things to do in Kunigiškės and Palanga →</a>
 </div>
 <div class="map-box">
 <iframe loading="lazy" src="https://www.google.com/maps?q=Vaivoryk%C5%A1t%C4%97s%20gatv%C4%97%207c-1,%20Palanga&amp;output=embed" title="Apartment location map"></iframe>
+</div>
+</div>
+</section>
+<section class="section section-tint" id="atsiliepimai">
+<div class="container">
+<div class="section-head">
+<div><h2 data-i18n="reviewsTitle">Guest reviews</h2></div>
+</div>
+<div class="reviews-grid">
+<article class="review-card">
+<div aria-hidden="true" class="review-stars">★★★★★</div>
+<p class="review-text" data-i18n="review1Text">“Only the best impressions – tidy, comfortable, everything you need for a great holiday. The pool area borders the terrace, which is very convenient.”</p>
+<div class="review-author" data-i18n="review1Author">Dovilė, Lithuania</div>
+</article>
+<article class="review-card">
+<div aria-hidden="true" class="review-stars">★★★★★</div>
+<p class="review-text" data-i18n="review2Text">“Clean, tidy, a large terrace, a shop and the beach nearby, and a lake on the other side.”</p>
+<div class="review-author" data-i18n="review2Author">Vita, France</div>
+</article>
+<article class="review-card">
+<div aria-hidden="true" class="review-score">10/10</div>
+<p class="review-text" data-i18n="review3Text">“Exceptional” – rated 10/10 after a family holiday with young children.</p>
+<div class="review-author" data-i18n="review3Author">Evaldas, United Kingdom</div>
+</article>
+</div>
+<p class="reviews-note"><span data-i18n="reviewsNote">Real guest reviews from Booking.com.</span> <a data-i18n="reviewsLink" href="https://www.booking.com/hotel/lt/vaivorykstes-poolside-apartment.html" rel="noopener" target="_blank">Read all reviews →</a></p>
+</div>
+</section>
+<section class="section section-plain" id="duk">
+<div class="container">
+<div class="section-head">
+<div><h2 data-i18n="faqTitle">Frequently asked questions</h2></div>
+</div>
+<div class="faq-list">
+<details class="faq-item">
+<summary data-i18n="faq1q">How many guests can stay in the apartment?</summary>
+<p data-i18n="faq1a">The apartment comfortably sleeps up to 4 guests: a double bed in the bedroom and a fold-out sofa bed in the living room.</p>
+</details>
+<details class="faq-item">
+<summary data-i18n="faq2q">Is the pool heated?</summary>
+<p data-i18n="faq2a">Yes, the outdoor pool is heated, so swimming is comfortable throughout the warm season. The private terrace has direct access to the pool.</p>
+</details>
+<details class="faq-item">
+<summary data-i18n="faq3q">How far is the sea?</summary>
+<p data-i18n="faq3a">The Kunigiškės beach is about a 10-minute walk away along a quiet path through the pine forest.</p>
+</details>
+<details class="faq-item">
+<summary data-i18n="faq4q">Is parking available?</summary>
+<p data-i18n="faq4a">Yes, guests have a free private parking space with gated access.</p>
+</details>
+<details class="faq-item">
+<summary data-i18n="faq5q">What are the check-in and check-out times?</summary>
+<p data-i18n="faq5a">Check-in from 15:00, check-out until 11:00. Different times can be arranged individually.</p>
+</details>
+<details class="faq-item">
+<summary data-i18n="faq7q">Are pets allowed?</summary>
+<p data-i18n="faq7a">Unfortunately, pets are not allowed – we want to keep the apartment comfortable for all guests, including those with allergies.</p>
+</details>
+<details class="faq-item">
+<summary data-i18n="faq6q">How do I book the apartment?</summary>
+<p data-i18n="faq6a">Book directly by phone +370 677 55519, via WhatsApp or by email. Booking direct often gets you a better price than booking platforms.</p>
+</details>
 </div>
 </div>
 </section>
@@ -248,7 +393,7 @@
 </div>
 <div class="cta-actions">
 <a class="btn btn-secondary contact-btn" data-i18n="bookingPhone" href="tel:+37067755519">+370 677 55519</a>
-<a class="btn btn-whatsapp" href="https://wa.me/37067755519" rel="noopener" target="_blank">WhatsApp</a>
+<a class="btn btn-whatsapp" href="https://wa.me/37067755519?text=Hello%2C%20I%27m%20interested%20in%20the%20apartment%20in%20Palanga.%20Do%20you%20have%20available%20dates%3F" rel="noopener" target="_blank">WhatsApp</a>
 <a class="btn btn-primary" data-i18n="bookingEmail" href="mailto:vaivorykstespoolsideapartment@gmail.com">Email</a>
 </div>
 </div>
@@ -256,7 +401,23 @@
 </section>
 </main>
 <footer class="footer">
-<div class="container" data-i18n="footerText">© Vaivorykštės Poolside Apartment</div>
+<div class="container footer-grid">
+<div class="footer-col">
+<strong>Vaivorykštės Poolside Apartment</strong>
+<p data-i18n="footerTagline">Apartment with a heated pool in Kunigiškės, Palanga</p>
+</div>
+<div class="footer-col">
+<strong data-i18n="footerContacts">Contacts</strong>
+<p>Vaivorykštės g. 7C-1, Kunigiškiai, Palanga<br/>
+<a href="tel:+37067755519">+370 677 55519</a><br/>
+<a href="mailto:vaivorykstespoolsideapartment@gmail.com">vaivorykstespoolsideapartment@gmail.com</a></p>
+</div>
+<div class="footer-col">
+<strong data-i18n="footerNav">Navigation</strong>
+<p><a data-i18n="navFeatures" href="#patogumai">Amenities</a> · <a data-i18n="navGallery" href="#galerija">Gallery</a> · <a data-i18n="navPricing" href="#kainos">Prices</a> · <a data-i18n="navCalendar" href="#kalendorius">Calendar</a> · <a data-i18n="navFaq" href="#duk">FAQ</a> · <a data-i18n="navArticle" href="kunigiskes/">Things to do in Kunigiškės</a></p>
+</div>
+</div>
+<div class="container footer-copy" data-i18n="footerText">© Vaivorykštės Poolside Apartment</div>
 </footer>
 <div aria-hidden="true" class="lightbox" id="lightbox">
 <button aria-label="Close" class="lightbox-close" id="lightboxClose">×</button>
