@@ -341,25 +341,21 @@
 
     <section id="atsiliepimai" class="section section-tint">
       <div class="container">
-        <div class="section-head">
-          <div><h2 data-i18n="reviewsTitle">Svečių atsiliepimai</h2></div>
+        <div class="section-head reviews-head">
+          <div>
+            <h2 data-i18n="reviewsTitle">Svečių atsiliepimai</h2>
+            <p data-i18n="reviewsIntro">Ką sako svečiai, apsistoję Vaivorykštės Poolside Apartment.</p>
+          </div>
         </div>
-        <div class="reviews-grid">
-          <article class="review-card">
-            <div class="review-stars" aria-hidden="true">★★★★★</div>
-            <p class="review-text" data-i18n="review1Text">„Tik geriausi atsiliepimai – tvarkinga, patogu, visko yra, ko reikia puikioms atostogoms. Baseino zona ribojasi su terasa, tad labai patogu."</p>
-            <div class="review-author" data-i18n="review1Author">Dovilė, Lietuva</div>
-          </article>
-          <article class="review-card">
-            <div class="review-stars" aria-hidden="true">★★★★★</div>
-            <p class="review-text" data-i18n="review2Text">„Švaru, tvarkinga, didelė terasa, netoli parduotuvė ir pliažas bei ežeras iš kitos pusės."</p>
-            <div class="review-author" data-i18n="review2Author">Vita, Prancūzija</div>
-          </article>
-          <article class="review-card">
-            <div class="review-score" aria-hidden="true">10/10</div>
-            <p class="review-text" data-i18n="review3Text">„Exceptional" – įvertinimas 10/10 po šeimos atostogų su mažais vaikais.</p>
-            <div class="review-author" data-i18n="review3Author">Evaldas, Jungtinė Karalystė</div>
-          </article>
+        <div class="reviews-carousel" id="reviewsCarousel">
+          <div class="rev-viewport">
+            <div class="rev-track" id="revTrack"><!-- atsiliepimai įkeliami per script.js --></div>
+          </div>
+          <div class="rev-controls">
+            <button class="rev-arrow prev" id="revPrev" type="button" aria-label="Ankstesnis atsiliepimas">‹</button>
+            <div class="rev-dots" id="revDots" role="tablist" aria-label="Atsiliepimai"></div>
+            <button class="rev-arrow next" id="revNext" type="button" aria-label="Kitas atsiliepimas">›</button>
+          </div>
         </div>
         <p class="reviews-note"><span data-i18n="reviewsNote">Tikri svečių atsiliepimai iš Booking.com.</span> <a href="https://www.booking.com/hotel/lt/vaivorykstes-poolside-apartment.lt.html" target="_blank" rel="noopener" data-i18n="reviewsLink">Skaityti visus atsiliepimus →</a></p>
       </div>

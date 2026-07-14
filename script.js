@@ -247,7 +247,86 @@ function setLanguage(lang){
     });
   }
   langButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+  renderReviews(t);
   localStorage.setItem('siteLanguage', lang);
+}
+
+// === Atsiliepimų karuselė ===
+const revTrack = document.getElementById('revTrack');
+const revDots = document.getElementById('revDots');
+const revPrev = document.getElementById('revPrev');
+const revNext = document.getElementById('revNext');
+const revCarousel = document.getElementById('reviewsCarousel');
+let revIndex = 0;
+let revCount = 0;
+let revTimer = null;
+
+function initialOf(name){
+  return (name || '?').trim().charAt(0).toUpperCase();
+}
+
+function renderReviews(t){
+  if(!revTrack) return;
+  const list = Array.isArray(t.reviews) ? t.reviews : [];
+  revCount = list.length;
+  revTrack.innerHTML = list.map(r => `
+    <article class="rev-card">
+      <div class="rev-avatar" aria-hidden="true">${initialOf(r.author)}</div>
+      <div class="rev-body">
+        <div class="rev-stars" aria-hidden="true">★★★★★</div>
+        <p class="rev-text">“${r.text}”</p>
+        <div class="rev-meta"><span class="rev-name">${r.author}</span><span class="rev-country">${r.country || ''}</span>${r.score ? `<span class="rev-score">${r.score}</span>` : ''}</div>
+      </div>
+    </article>`).join('');
+  revDots.innerHTML = list.map((_, i) =>
+    `<button class="rev-dot" type="button" role="tab" data-index="${i}" aria-label="${i + 1}"></button>`).join('');
+  revDots.querySelectorAll('.rev-dot').forEach(dot => {
+    dot.addEventListener('click', () => { goToReview(Number(dot.dataset.index)); restartAutoplay(); });
+  });
+  if(revPrev) revPrev.setAttribute('aria-label', t.reviewsPrev || 'Previous');
+  if(revNext) revNext.setAttribute('aria-label', t.reviewsNext || 'Next');
+  const showControls = revCount > 1;
+  if(revPrev) revPrev.style.display = showControls ? '' : 'none';
+  if(revNext) revNext.style.display = showControls ? '' : 'none';
+  revDots.style.display = showControls ? '' : 'none';
+  revIndex = 0;
+  updateReviewView();
+}
+
+function updateReviewView(){
+  if(!revTrack || !revCount) return;
+  revTrack.style.transform = `translateX(-${revIndex * 100}%)`;
+  revDots.querySelectorAll('.rev-dot').forEach((dot, i) => {
+    const active = i === revIndex;
+    dot.classList.toggle('active', active);
+    dot.setAttribute('aria-selected', active ? 'true' : 'false');
+  });
+}
+
+function goToReview(i){
+  if(!revCount) return;
+  revIndex = (i + revCount) % revCount;
+  updateReviewView();
+}
+
+function restartAutoplay(){
+  if(revTimer) clearInterval(revTimer);
+  if(revCount > 1){
+    revTimer = setInterval(() => goToReview(revIndex + 1), 7000);
+  }
+}
+
+if(revPrev) revPrev.addEventListener('click', () => { goToReview(revIndex - 1); restartAutoplay(); });
+if(revNext) revNext.addEventListener('click', () => { goToReview(revIndex + 1); restartAutoplay(); });
+if(revCarousel){
+  revCarousel.addEventListener('mouseenter', () => { if(revTimer) clearInterval(revTimer); });
+  revCarousel.addEventListener('mouseleave', restartAutoplay);
+  let rsx = 0;
+  revCarousel.addEventListener('touchstart', e => { rsx = e.touches[0].clientX; }, { passive: true });
+  revCarousel.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - rsx;
+    if(Math.abs(dx) > 45){ goToReview(revIndex + (dx < 0 ? 1 : -1)); restartAutoplay(); }
+  }, { passive: true });
 }
 
 galleryButtons.forEach(btn => btn.addEventListener("click", () => openLightbox(Number(btn.dataset.index))));
@@ -336,3 +415,4 @@ const runningOnWeb = window.location.protocol === 'http:' || window.location.pro
 setLanguage(runningOnWeb
   ? (getPathLanguage() || getPageDefaultLanguage())
   : (localStorage.getItem('siteLanguage') || getPageDefaultLanguage()));
+restartAutoplay();
