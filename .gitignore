@@ -1,0 +1,8 @@
+# macOS sisteminiai failai
+.DS_Store
+**/.DS_Store
+
+# Redaktorių / įrankių aplankai
+.claude/
+.vscode/
+.idea/
